@@ -18,7 +18,7 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
           user: bonjour1000
           template: classic
-          base: ""
+          base: header
           filename: metrics.plugin.habits.charts.svg
           config_timezone: Europe/Paris
           
