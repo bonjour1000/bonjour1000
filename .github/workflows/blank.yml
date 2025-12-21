@@ -38,7 +38,7 @@ jobs:
           # PLUGIN: Languages - Langages utilisés
           # ==========================================
           plugin_languages: yes
-          plugin_languages_analysis_timeout: 15
+          plugin_languages_analysis_timeout: 60
           plugin_languages_categories: markup, programming
           plugin_languages_colors: github
           plugin_languages_limit: 8
@@ -52,7 +52,7 @@ jobs:
           # ==========================================
           # PLUGIN: Habits - Habitudes de codage
           # ==========================================
-          plugin_habits: yes
+          plugin_habits: no
           plugin_habits_from: 200
           plugin_habits_days: 30
           plugin_habits_facts: yes
@@ -63,7 +63,7 @@ jobs:
           # ==========================================
           # PLUGIN: Notable contributions
           # ==========================================
-          plugin_notable: yes
+          plugin_notable: no
           plugin_notable_from: organization
           plugin_notable_repositories: yes
           plugin_notable_indepth: yes
@@ -81,13 +81,13 @@ jobs:
           # ==========================================
           # PLUGIN: Discussions
           # ==========================================
-          plugin_discussions: yes
+          plugin_discussions: no
           plugin_discussions_categories: yes
           
           # ==========================================
           # PLUGIN: Topics
           # ==========================================
-          plugin_topics: yes
+          plugin_topics: no
           plugin_topics_mode: starred
           plugin_topics_sort: stars
           plugin_topics_limit: 15
@@ -95,20 +95,20 @@ jobs:
           # ==========================================
           # PLUGIN: Stars
           # ==========================================
-          plugin_stars: yes
+          plugin_stars: no
           plugin_stars_limit: 4
           
           # ==========================================
           # PLUGIN: Stargazers
           # ==========================================
-          plugin_stargazers: yes
-          plugin_stargazers_charts: yes
+          plugin_stargazers: no
+          plugin_stargazers_charts: no
           plugin_stargazers_charts_type: classic
           
           # ==========================================
           # PLUGIN: People - Followers & Following
           # ==========================================
-          plugin_people: yes
+          plugin_people: no
           plugin_people_limit: 24
           plugin_people_size: 28
           plugin_people_types: followers, following
@@ -116,7 +116,7 @@ jobs:
           # ==========================================
           # PLUGIN: Reactions
           # ==========================================
-          plugin_reactions: yes
+          plugin_reactions: no
           plugin_reactions_limit: 200
           plugin_reactions_days: 90
           plugin_reactions_display: absolute
@@ -124,7 +124,7 @@ jobs:
           # ==========================================
           # PLUGIN: Follow-up
           # ==========================================
-          plugin_followup: yes
+          plugin_followup: no
           plugin_followup_sections: repositories
           plugin_followup_indepth: yes
           
@@ -139,7 +139,7 @@ jobs:
           # ==========================================
           # PLUGIN: Traffic
           # ==========================================
-          plugin_traffic: yes
+          plugin_traffic: no
           
           # ==========================================
           # Options avancées
