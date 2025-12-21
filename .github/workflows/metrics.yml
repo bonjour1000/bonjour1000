@@ -1,4 +1,4 @@
-name: GitHub Metrics Complete
+name: GitHub Metrics
 
 on:
   schedule: [{cron: "0 4 * * *"}]
@@ -57,14 +57,6 @@ jobs:
           config_timezone: Europe/Paris
           config_padding: 6%, 10%
           filename: right-metrics.svg
-          
-          # Plugin Achievements - Compact display
-          plugin_achievements: yes
-          plugin_achievements_only: >-
-            polyglot, stargazer, sponsor, deployer, member, maintainer, developer,
-            scripter, packager, explorer, infographile, manager
-          plugin_achievements_display: compact
-          plugin_achievements_threshold: X
           
           repositories_forks: no
           repositories_affiliations: owner, collaborator
