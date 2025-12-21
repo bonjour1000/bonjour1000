@@ -1,0 +1,292 @@
+name: Metrics with Themes (Thèmes personnalisés)
+
+on:
+  # Exécution manuelle uniquement pour tester différents thèmes
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: 'Choisir un thème'
+        required: true
+        type: choice
+        options:
+          - default
+          - dark
+          - light
+          - terminal
+          - github-dark
+          - github-light
+
+jobs:
+  # ==========================================
+  # THÈME PAR DÉFAUT (classique)
+  # ==========================================
+  metrics-default:
+    if: github.event.inputs.theme == 'default' || github.event.inputs.theme == ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ${{ github.repository_owner }}
+          template: classic
+          base: header, activity, community, repositories
+          config_timezone: Europe/Paris
+          filename: github-metrics-classic.svg
+          
+          # Configuration standard
+          plugin_isocalendar: yes
+          plugin_languages: yes
+          plugin_languages_indepth: yes
+          plugin_habits: yes
+          plugin_notable: yes
+          
+  # ==========================================
+  # THÈME SOMBRE (Dark Mode)
+  # ==========================================
+  metrics-dark:
+    if: github.event.inputs.theme == 'dark'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ${{ github.repository_owner }}
+          template: classic
+          base: header, activity, community, repositories
+          config_timezone: Europe/Paris
+          filename: github-metrics-dark.svg
+          
+          # Thème sombre avec CSS personnalisé
+          config_display: large
+          config_padding: 6%, 10%
+          
+          extras_css: |
+            * {
+              color: #e4e4e4 !important;
+              fill: #e4e4e4 !important;
+            }
+            .field svg {
+              fill: #8b949e !important;
+            }
+            h2 {
+              color: #58a6ff !important;
+            }
+            svg {
+              background: #0d1117 !important;
+            }
+          
+          plugin_isocalendar: yes
+          plugin_languages: yes
+          plugin_languages_indepth: yes
+          plugin_habits: yes
+          
+  # ==========================================
+  # THÈME TERMINAL (Style console)
+  # ==========================================
+  metrics-terminal:
+    if: github.event.inputs.theme == 'terminal'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ${{ github.repository_owner }}
+          template: terminal
+          base: header, activity, community, repositories
+          config_timezone: Europe/Paris
+          filename: github-metrics-terminal.svg
+          
+          plugin_isocalendar: yes
+          plugin_languages: yes
+          plugin_habits: yes
+          
+  # ==========================================
+  # MÉTRIQUES COMPACTES (version minimaliste)
+  # ==========================================
+  metrics-compact:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ${{ github.repository_owner }}
+          template: classic
+          base: header, repositories
+          config_timezone: Europe/Paris
+          filename: github-metrics-compact.svg
+          config_padding: 0, 10%
+          
+          # Version minimale et rapide
+          plugin_languages: yes
+          plugin_languages_limit: 4
+          plugin_languages_sections: most-used
+          
+  # ==========================================
+  # MÉTRIQUES COLORÉES (Arc-en-ciel)
+  # ==========================================
+  metrics-colorful:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ${{ github.repository_owner }}
+          template: classic
+          base: header, activity, community, repositories
+          config_timezone: Europe/Paris
+          filename: github-metrics-colorful.svg
+          
+          # Couleurs vives
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+          
+          plugin_languages: yes
+          plugin_languages_indepth: yes
+          plugin_languages_colors: rainbow
+          
+          plugin_habits: yes
+          plugin_habits_charts: yes
+          plugin_habits_charts_type: chartist
+          
+          extras_css: |
+            h1, h2 {
+              background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              animation: gradient 3s ease infinite;
+            }
+            @keyframes gradient {
+              0%, 100% { filter: hue-rotate(0deg); }
+              50% { filter: hue-rotate(360deg); }
+            }
+            
+  # ==========================================
+  # VERSION GITHUB DARK (style GitHub officiel)
+  # ==========================================
+  metrics-github-dark:
+    if: github.event.inputs.theme == 'github-dark'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ${{ github.repository_owner }}
+          template: classic
+          base: header, activity, community, repositories
+          config_timezone: Europe/Paris
+          filename: github-metrics-github-dark.svg
+          
+          extras_css: |
+            * {
+              color: #c9d1d9 !important;
+              fill: #c9d1d9 !important;
+            }
+            svg {
+              background: #0d1117 !important;
+            }
+            h1, h2 {
+              color: #58a6ff !important;
+            }
+            .field svg {
+              fill: #8b949e !important;
+            }
+            
+          plugin_isocalendar: yes
+          plugin_languages: yes
+          plugin_languages_indepth: yes
+          plugin_habits: yes
+          plugin_notable: yes
+          
+  # ==========================================
+  # FOCUS LANGAGES (Spécialisé langages)
+  # ==========================================
+  metrics-languages-focus:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ${{ github.repository_owner }}
+          template: classic
+          base: ""
+          config_timezone: Europe/Paris
+          filename: github-metrics-languages-detailed.svg
+          config_padding: 8%, 12%
+          
+          # Focus total sur les langages
+          plugin_languages: yes
+          plugin_languages_analysis_timeout: 60
+          plugin_languages_categories: markup, programming, data, prose
+          plugin_languages_colors: github
+          plugin_languages_limit: 20
+          plugin_languages_recent_categories: markup, programming, data
+          plugin_languages_recent_days: 365
+          plugin_languages_recent_load: 1000
+          plugin_languages_sections: most-used, recently-used
+          plugin_languages_threshold: 0%
+          plugin_languages_details: bytes-size, percentage, lines
+          plugin_languages_indepth: yes
+          
+          repositories_forks: yes
+          repositories_affiliations: owner, collaborator, organization_member
+          
+  # ==========================================
+  # STYLE MINIMALISTE MODERNE
+  # ==========================================
+  metrics-minimal-modern:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ${{ github.repository_owner }}
+          template: classic
+          base: header, repositories
+          config_timezone: Europe/Paris
+          filename: github-metrics-minimal.svg
+          config_padding: 6%, 10%
+          
+          extras_css: |
+            * {
+              font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            }
+            h1 {
+              font-size: 24px !important;
+              font-weight: 600 !important;
+              letter-spacing: -0.5px !important;
+            }
+            h2 {
+              font-size: 18px !important;
+              font-weight: 500 !important;
+              opacity: 0.8;
+            }
+            .field {
+              padding: 4px 0;
+            }
+            svg {
+              border-radius: 12px;
+            }
+            
+          plugin_languages: yes
+          plugin_languages_limit: 6
+          plugin_languages_sections: most-used
+          
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
+

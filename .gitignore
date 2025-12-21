@@ -1,0 +1,53 @@
+# Fichiers temporaires
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Fichiers de l'éditeur
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node modules (si vous ajoutez des scripts Node.js)
+node_modules/
+
+# Variables d'environnement
+.env
+.env.local
+.env.*.local
+
+# Fichiers de test
+test/
+tests/
+*.test.js
+
+# Cache
+.cache/
+*.cache
+
+# Fichiers de build (si applicable)
+dist/
+build/
+
+# Ne pas ignorer les SVG générés par Metrics
+!github-metrics*.svg
+!metrics-*.svg
+
