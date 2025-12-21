@@ -21,7 +21,7 @@ jobs:
           template: classic
           base: header, activity, community, metadata
           config_timezone: Europe/Paris
-          config_padding: 6%, 10%
+          config_padding: 8%, 12%
           filename: left-metrics.svg
           
           plugin_isocalendar: yes
@@ -38,7 +38,6 @@ jobs:
           repositories_forks: yes
           repositories_affiliations: owner, collaborator
           use_prebuilt_image: yes
-          experimental_features: --optimize-svg
   
   # Job 2 : Right Metrics
   right-metrics:
@@ -55,11 +54,10 @@ jobs:
           template: classic
           base: repositories
           config_timezone: Europe/Paris
-          config_padding: 6%, 10%
+          config_padding: 8%, 12%
           filename: right-metrics.svg
           
           repositories_forks: no
           repositories_affiliations: owner, collaborator
           use_prebuilt_image: yes
-          experimental_features: --optimize-svg
 
