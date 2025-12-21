@@ -55,7 +55,6 @@ jobs:
           plugin_habits_charts: yes
           plugin_habits_charts_type: classic
           plugin_habits_trim: yes
-          config_timezone: Europe/Paris
           
           # ==========================================
           # PLUGIN: Notable contributions
