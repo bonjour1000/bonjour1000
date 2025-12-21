@@ -38,16 +38,12 @@ jobs:
           # PLUGIN: Languages - Langages utilisés
           # ==========================================
           plugin_languages: yes
-          plugin_languages_analysis_timeout: 60
           plugin_languages_categories: markup, programming
           plugin_languages_colors: github
           plugin_languages_limit: 8
-          plugin_languages_recent_days: 365
-          plugin_languages_recent_load: 500
           plugin_languages_sections: most-used
           plugin_languages_threshold: 0%
-          plugin_languages_details: bytes-size, percentage, lines
-          plugin_languages_indepth: yes
+          plugin_languages_details: bytes-size, percentage
           
           # ==========================================
           # PLUGIN: Habits - Habitudes de codage
