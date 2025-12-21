@@ -1,11 +1,10 @@
-name: Metrics with Themes (Thèmes personnalisés)
+name: Test Theme (Un thème à la fois)
 
 on:
-  # Exécution manuelle uniquement pour tester différents thèmes
   workflow_dispatch:
     inputs:
       theme:
-        description: 'Choisir un thème'
+        description: 'Choisir un thème à tester'
         required: true
         default: 'dark'
         type: choice
@@ -16,28 +15,27 @@ on:
           - colorful
 
 jobs:
-  # ==========================================
-  # THÈME SOMBRE (Dark Mode)
-  # ==========================================
-  metrics-dark:
-    if: github.event.inputs.theme == 'dark'
+  test-theme:
     runs-on: ubuntu-latest
+    environment: 
+      name: production
     permissions:
       contents: write
     steps:
-      - uses: lowlighter/metrics@latest
+      # THÈME DARK
+      - name: Generate Dark Theme
+        if: github.event.inputs.theme == 'dark'
+        uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          user: ${{ github.repository_owner }}
+          user: bonjour1000
           template: classic
           base: header, activity, community, repositories
           config_timezone: Europe/Paris
+          config_padding: 6%, 10%
           filename: github-metrics-dark.svg
           
-          # Thème sombre avec CSS personnalisé
-          config_display: large
-          config_padding: 6%, 10%
-          
+          # Style sombre
           extras_css: |
             * {
               color: #e4e4e4 !important;
@@ -57,20 +55,14 @@ jobs:
           plugin_languages: yes
           plugin_languages_indepth: yes
           plugin_habits: yes
-          
-  # ==========================================
-  # THÈME TERMINAL (Style console)
-  # ==========================================
-  metrics-terminal:
-    if: github.event.inputs.theme == 'terminal'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: lowlighter/metrics@latest
+      
+      # THÈME TERMINAL
+      - name: Generate Terminal Theme
+        if: github.event.inputs.theme == 'terminal'
+        uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          user: ${{ github.repository_owner }}
+          user: bonjour1000
           template: terminal
           base: header, activity, community, repositories
           config_timezone: Europe/Paris
@@ -79,69 +71,45 @@ jobs:
           plugin_isocalendar: yes
           plugin_languages: yes
           plugin_habits: yes
-          
-  # ==========================================
-  # MÉTRIQUES COMPACTES (version minimaliste)
-  # ==========================================
-  metrics-compact:
-    if: github.event.inputs.theme == 'compact'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: lowlighter/metrics@latest
+      
+      # THÈME COMPACT
+      - name: Generate Compact Theme
+        if: github.event.inputs.theme == 'compact'
+        uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          user: ${{ github.repository_owner }}
+          user: bonjour1000
           template: classic
           base: header, repositories
           config_timezone: Europe/Paris
-          filename: github-metrics-compact.svg
           config_padding: 0, 10%
+          filename: github-metrics-compact.svg
           
-          # Version minimale et rapide
           plugin_languages: yes
           plugin_languages_limit: 4
           plugin_languages_sections: most-used
-          
-  # ==========================================
-  # MÉTRIQUES COLORÉES (Arc-en-ciel)
-  # ==========================================
-  metrics-colorful:
-    if: github.event.inputs.theme == 'colorful'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: lowlighter/metrics@latest
+      
+      # THÈME COLORFUL
+      - name: Generate Colorful Theme
+        if: github.event.inputs.theme == 'colorful'
+        uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          user: ${{ github.repository_owner }}
+          user: bonjour1000
           template: classic
           base: header, activity, community, repositories
           config_timezone: Europe/Paris
           filename: github-metrics-colorful.svg
           
-          # Couleurs vives
           plugin_isocalendar: yes
-          plugin_isocalendar_duration: full-year
-          
           plugin_languages: yes
-          plugin_languages_indepth: yes
           plugin_languages_colors: rainbow
-          
           plugin_habits: yes
-          plugin_habits_charts: yes
-          plugin_habits_charts_type: chartist
           
           extras_css: |
             h1, h2 {
               background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
-              animation: gradient 3s ease infinite;
             }
-            @keyframes gradient {
-              0%, 100% { filter: hue-rotate(0deg); }
-              50% { filter: hue-rotate(360deg); }
-            }
+
