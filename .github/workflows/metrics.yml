@@ -26,7 +26,7 @@ jobs:
           config_timezone: Europe/Paris
           config_padding: 6%, 10%
           config_output: svg
-          filename: github-metrics.svg
+          filename: left-metrics.svg
           
           # ==========================================
           # PLUGIN: Isocalendar - Calendrier annuel

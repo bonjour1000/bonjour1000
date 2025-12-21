@@ -4,39 +4,30 @@ Ce repository génère automatiquement mes statistiques GitHub.
 
 ---
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      
-## 📈 Statistiques principales
+<img align="left" src="/left-metrics.svg" alt="Métriques principales" width="47%" />
 
-![GitHub Metrics](github-metrics.svg)
+<p align="right">
+<img src="/right-metrics.svg" alt="Habitudes de codage" width="47%" />
+</p>
 
-    </td>
-    <td width="50%" valign="top">
-      
-## 🕐 Habitudes de codage
-
-![Habits Charts](metrics.plugin.habits.charts.svg)
-
-    </td>
-  </tr>
-</table>
+<br clear="both" />
 
 ---
 
 ## 🔌 Plugins inclus
 
-### Métriques principales (`github-metrics.svg`)
+### Métriques principales (`left-metrics.svg`)
 - 📅 **Isocalendar** - Calendrier annuel de contributions
 - 💻 **Languages** - Analyse des langages utilisés
 - 📏 **Lines** - Lignes de code par repository
+- 🎯 **Activity** - Activité récente
+- 👥 **Community** - Statistiques communautaires
 
-### Habitudes de codage (`metrics.plugin.habits.charts.svg`)
+### Habitudes de codage (`right-metrics.svg`)
 - 🕐 **Recent activity charts** - Graphiques d'activité récente
   - Heures de commit par heure du jour
   - Commits par jour de la semaine
-  - Habitudes de codage des 14 derniers jours
+  - Habitudes de codage des 30 derniers jours (1000 événements)
 
 ---
 
@@ -74,7 +65,11 @@ Pour tester différents styles visuels, utilisez le workflow `test-theme.yml` :
 ### Workflows actifs
 
 1. **`metrics.yml`** - Métriques principales (toutes les 6h)
+   - Génère : `left-metrics.svg`
+   
 2. **`habits-charts.yml`** - Graphiques d'habitudes (toutes les 6h)
+   - Génère : `right-metrics.svg`
+   
 3. **`test-theme.yml`** - Test de thèmes (manuel)
 
 ### Personnalisation
@@ -85,13 +80,13 @@ Pour modifier les plugins ou les options, éditez les fichiers de workflow.
 
 ```yaml
 # Changer la période d'analyse des habitudes
-plugin_habits_days: 30  # Au lieu de 14
+plugin_habits_days: 30  # 30 jours
 
 # Changer le type de graphique
-plugin_habits_charts_type: graph  # Au lieu de classic
+plugin_habits_charts_type: graph  # Style SVG smooth
 
 # Augmenter le nombre d'événements analysés
-plugin_habits_from: 500  # Au lieu de 200
+plugin_habits_from: 1000  # 1000 événements
 ```
 
 ---

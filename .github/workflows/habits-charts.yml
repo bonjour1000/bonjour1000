@@ -19,15 +19,15 @@ jobs:
           user: bonjour1000
           template: classic
           base: header
-          filename: metrics.plugin.habits.charts.svg
+          filename: right-metrics.svg
           config_timezone: Europe/Paris
           
           # Habits plugin - Charts uniquement
           plugin_habits: yes
-          plugin_habits_from: 200
-          plugin_habits_days: 14
+          plugin_habits_from: 1000
+          plugin_habits_days: 30
           plugin_habits_facts: no
           plugin_habits_charts: yes
-          plugin_habits_charts_type: classic
+          plugin_habits_charts_type: graph
           plugin_habits_trim: yes
 
