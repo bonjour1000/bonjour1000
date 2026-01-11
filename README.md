@@ -1,10 +1,8 @@
-<p align="center">
+<div align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&duration=4000&pause=1200&color=A277FF&center=true&vCenter=true&width=1000&lines=Building+tools+for+lazy+people+(me);If+it's+repetitive,+I'll+script+it.;Automation+·+Bots+·+Scrapers)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&duration=3600&pause=1200&color=A277FF&center=true&vCenter=true&width=1000&lines=Building+tools+for+lazy+people+(me);If+it's+repetitive,+I'll+script+it.;Automation+·+Bots+·+Scrapers)](https://git.io/typing-svg)
 
-</p>
-
-<br/>
+</div>
 
 <img align="left" src="/left-metrics.svg" alt="Left" width="47%" />
 
